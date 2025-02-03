@@ -84,6 +84,7 @@
         </div>
 
         <button id="generateBtn" onclick="generateChart()">See Diagnostics</button>
+        <button id="generateBtn" onclick="generateChart1()">See Figures</button>
     </div>
 
     <script>
@@ -157,7 +158,7 @@
             {location: 'Gongju-KNU', number: '230'},
             {location: 'Granada', number: '238'},
             {location: 'GrandForksND', number: '200'},
-            {location: 'GreenbeltMD', number: '2', url: 'https://plankton-app-nwuil.ondigitalocean.app/'},
+            {location: 'GreenbeltMD', number: '2', url: 'https://plankton-app-nwuil.ondigitalocean.app/', url1: 'https://lobster-app-2msl3.ondigitalocean.app/'},
             {location: 'Haldwani-ARIES', number: '250'},
             {location: 'HamptonVA-HU', number: '156'},
             {location: 'HamptonVA', number: '37'},
@@ -310,6 +311,25 @@
 
             if (selectedEntry && selectedEntry.url) {
                 window.open(selectedEntry.url, '_blank');
+            } else {
+                alert('No diagnostics URL found for the selected location and number.');
+            }
+        }
+
+        function generateChart1() {
+            const location = locationSelect.value;
+            const number = numberSelect.value;
+
+            if (!location || !number) {
+                alert('Please select both Location and Number.');
+                return;
+            }
+
+            // Find the corresponding URL
+            const selectedEntry = pandoraData.find(item => item.location === location && item.number === number);
+
+            if (selectedEntry && selectedEntry.url) {
+                window.open(selectedEntry.url1, '_blank');
             } else {
                 alert('No diagnostics URL found for the selected location and number.');
             }
